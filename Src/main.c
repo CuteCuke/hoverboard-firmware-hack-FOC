@@ -561,11 +561,13 @@ int main(void)
       //     rtY_Right.n_mot,
       //     rtY_Left.n_mot);
 #else
-        printf("[%i,%i,%i,%i]\r\n",
+        printf("[%i,%i,%i,%i,%i,%i]\r\n",
                batVoltageCalib, // 6: for verifying battery voltage calibration
                board_temp_deg_c, // 8: for verifying board temperature calibration
                rtY_Right.n_mot,
-               rtY_Left.n_mot);
+               rtY_Left.n_mot,
+               cmdR,
+               cmdL);
 #endif
     }
 #endif
