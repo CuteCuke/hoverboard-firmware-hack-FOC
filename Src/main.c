@@ -623,7 +623,7 @@ int main(void)
     }
     else if (rtY_Left.z_errCode || rtY_Right.z_errCode)
     { // 1 beep (low pitch): Motor error, disable motors
-     // enable = 0;
+      enable = 0;
       beepCount(1, 24, 1);
     }
     else if (timeoutFlgADC)
@@ -682,7 +682,7 @@ int main(void)
 #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
       printf("Powering off, wheels were inactive for too long\r\n");
 #endif
-      poweroff();
+      // poweroff();
     }
 
     // HAL_GPIO_TogglePin(LED_PORT, LED_PIN);                 // This is to measure the main() loop duration with an oscilloscope connected to LED_PIN
