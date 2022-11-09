@@ -466,7 +466,7 @@ int main(void)
         LCD_SetLocation(&lcd, 0, 1);
         LCD_WriteString(&lcd, "Keeper too fast.");
 #endif
-        poweroff();
+        // poweroff();
       }
 
 #ifdef SUPPORT_NUNCHUK
@@ -612,14 +612,14 @@ int main(void)
 #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
       printf("Powering off, temperature is too high\r\n");
 #endif
-      poweroff();
+      // poweroff();
     }
     else if (BAT_DEAD_ENABLE && batVoltage < BAT_DEAD && speedAvgAbs < 20)
     {
 #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
       printf("Powering off, battery voltage is too low\r\n");
 #endif
-      poweroff();
+      // poweroff();
     }
     else if (rtY_Left.z_errCode || rtY_Right.z_errCode)
     { // 1 beep (low pitch): Motor error, disable motors
