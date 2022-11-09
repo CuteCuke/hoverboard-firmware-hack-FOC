@@ -623,7 +623,7 @@ int main(void)
     }
     else if (rtY_Left.z_errCode || rtY_Right.z_errCode)
     { // 1 beep (low pitch): Motor error, disable motors
-      enable = 0;
+     // enable = 0;
       beepCount(1, 24, 1);
     }
     else if (timeoutFlgADC)
