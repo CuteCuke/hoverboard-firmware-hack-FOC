@@ -456,17 +456,17 @@ int main(void)
 
       if ((distance / 1345.0) - setDistance > 0.5 && (lastDistance / 1345.0) - setDistance > 0.5)
       { // Error, robot too far away!
-        enable = 0;
-        beepLong(5);
-#ifdef SUPPORT_LCD
-        LCD_ClearDisplay(&lcd);
-        HAL_Delay(5);
-        LCD_SetLocation(&lcd, 0, 0);
-        LCD_WriteString(&lcd, "Emergency Off!");
-        LCD_SetLocation(&lcd, 0, 1);
-        LCD_WriteString(&lcd, "Keeper too fast.");
-#endif
-        poweroff();
+        // enable = 0;
+        // beepLong(5);
+        // #ifdef SUPPORT_LCD
+        //         LCD_ClearDisplay(&lcd);
+        //         HAL_Delay(5);
+        //         LCD_SetLocation(&lcd, 0, 0);
+        //         LCD_WriteString(&lcd, "Emergency Off!");
+        //         LCD_SetLocation(&lcd, 0, 1);
+        //         LCD_WriteString(&lcd, "Keeper too fast.");
+        // #endif
+        //         poweroff();
       }
 
 #ifdef SUPPORT_NUNCHUK
@@ -562,7 +562,7 @@ int main(void)
       //     rtY_Left.n_mot);
 #else
         printf("[%i,%i,%i,%i]\r\n",
-               batVoltageCalib, // 6: for verifying battery voltage calibration
+               batVoltageCalib,  // 6: for verifying battery voltage calibration
                board_temp_deg_c, // 8: for verifying board temperature calibration
                rtY_Right.n_mot,
                rtY_Left.n_mot);
@@ -609,17 +609,17 @@ int main(void)
     // ####### BEEP AND EMERGENCY POWEROFF #######
     if (TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && speedAvgAbs < 20)
     { // poweroff before mainboard burns OR low bat 3
-#if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-      printf("Powering off, temperature is too high\r\n");
-#endif
-      poweroff();
+      // #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+      //       printf("Powering off, temperature is too high\r\n");
+      // #endif
+      //       poweroff();
     }
     else if (BAT_DEAD_ENABLE && batVoltage < BAT_DEAD && speedAvgAbs < 20)
     {
-#if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-      printf("Powering off, battery voltage is too low\r\n");
-#endif
-      poweroff();
+      // #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+      //       printf("Powering off, battery voltage is too low\r\n");
+      // #endif
+      //       poweroff();
     }
     else if (rtY_Left.z_errCode || rtY_Right.z_errCode)
     { // 1 beep (low pitch): Motor error, disable motors
@@ -679,10 +679,10 @@ int main(void)
 
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1))
     { // rest of main loop needs maybe 1ms
-#if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-      printf("Powering off, wheels were inactive for too long\r\n");
-#endif
-      poweroff();
+      // #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+      //       printf("Powering off, wheels were inactive for too long\r\n");
+      // #endif
+      //       poweroff();
     }
 
     // HAL_GPIO_TogglePin(LED_PORT, LED_PIN);                 // This is to measure the main() loop duration with an oscilloscope connected to LED_PIN
